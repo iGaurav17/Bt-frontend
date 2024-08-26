@@ -14,8 +14,9 @@ const NavBar = () => {
           <Link to="/bugs" className="hover:text-gray-400">Bugs</Link>
           <Link to="/profile" className="hover:text-gray-400">Profile</Link>
         </div>
-        <div>
-          <Link to="/login" className="bg-yellow-500 text-gray-800 px-4 py-2 rounded hover:bg-yellow-400">Login</Link>
+        <div className="space-x-4 text-[#fff]">
+          <Link to="/login" className=" border-2 border-blue-400 rounded-full px-4 py-2 hover:bg-blue-400">Login</Link>
+          <Link to="/Register" className="bg-blue-400 border-2 border-blue-400 rounded-full px-4 py-2 hover:bg-gray-800">Register</Link>
         </div>
       </div>
     </nav>
