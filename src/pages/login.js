@@ -1,23 +1,25 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { loginUser } from '../Redux/actions/authActions';
+import { useNavigate } from'react-router-dom';
 
 function Login() {
-  const [formData, setFormData] = useState({
-    email: '',
-    password: '',
-  });
+  const dispatch = useDispatch();
+  const [formData, setFormData] = useState({email: '', password: '',});
 
   const handleChange = (e) => {
-    setFormData({
-      ...formData,
-      [e.target.name]: e.target.value,
-    });
+    setFormData({...formData,[e.target.name]: e.target.value,});
   };
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call your backend API for login
-    console.log(formData);
+    dispatch(loginUser(formData)); 
   };
+  const navigate = useNavigate();
+  const handleLogin = () =>{
+    console.log('Login button clicked!');
+    navigate('/Dashboard');
+  }
 
   return (
     <div className="flex items-center justify-center bg-gray-100" style={{height: "calc(100vh - 4.5rem)"}}>
@@ -53,10 +55,12 @@ function Login() {
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={handleLogin}
           >
             Login
           </button>
         </form>
+        
       </div>
     </div>
   );
