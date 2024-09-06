@@ -1,8 +1,12 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
+import { registerUser } from '../Redux/actions/authActions';
+import { useNavigate } from 'react-router-dom';
 
 function Register() {
+  const dispatch = useDispatch();
   const [formData, setFormData] = useState({
-    username: '',
+    name: '',
     email: '',
     password: '',
   });
@@ -16,8 +20,15 @@ function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    // Call your backend API for registration
-    console.log(formData);
+    dispatch(registerUser(formData)); 
+  };
+
+  const navigate =useNavigate();
+
+  const handleRegister = () => {
+    console.log('Register button clicked!');
+    // Perform registration logic here if needed
+    navigate('/Dashboard'); // Navigate to the dashboard page
   };
 
   return (
@@ -26,13 +37,13 @@ function Register() {
         <h2 className="text-3xl font-bold text-center mb-6">Register</h2>
         <form onSubmit={handleSubmit} className="space-y-6">
           <div>
-            <label htmlFor="username" className="block text-sm font-medium text-gray-700">Username</label>
+            <label htmlFor="name" className="block text-sm font-medium text-gray-700">name</label>
             <input
-              id="username"
+              id="name"
               type="text"
-              name="username"
+              name="name"
               placeholder="Username"
-              value={formData.username}
+              value={formData.name}
               onChange={handleChange}
               className="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm"
               required
@@ -67,6 +78,7 @@ function Register() {
           <button
             type="submit"
             className="w-full bg-indigo-600 text-white py-2 px-4 border border-transparent rounded-md shadow-sm text-base font-medium hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+            onClick={handleRegister}
           >
             Register
           </button>

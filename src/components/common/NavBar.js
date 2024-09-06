@@ -10,8 +10,8 @@ const NavBar = () => {
         </div>
         <div className="space-x-4">
           <Link to="/" className="hover:text-gray-400">Home</Link>
-          <Link to="/dashboard" className="hover:text-gray-400">Dashboard</Link>
-          <Link to="/bugs" className="hover:text-gray-400">Bugs</Link>
+          <Link to="/Dashboard" className="hover:text-gray-400">Dashboard</Link>
+          <Link to="/Bugs" className="hover:text-gray-400">Bugs</Link>
           <Link to="/profile" className="hover:text-gray-400">Profile</Link>
         </div>
         <div className="space-x-4 text-[#fff]">
